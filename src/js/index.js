@@ -1,4 +1,4 @@
-const EMOJIS = ["🥔", "🍒", "🥑", "🌽", "🥕", "🍇", "🍉", "🍌", "🥭", "🍍"]
+const EMOJIS = ["🥔", "🍒", "🥑", "🌽", "🥕", "🍇", "🍉", "🍌", "🥭", "🍍", "🥭", "🍍"]
 /**
  * Состояние игры
  * @property {boolean} isGameStarted - Игра началась или нет.
@@ -43,14 +43,28 @@ const generateGame = () => {
     // Итерация по карточкам
     const cardsHTML = EMOJIS.map((emoji) => {
         return `
-            <div class="cards">
+            <div class="card">
                 <div class="card-front"></div>
                 <div class="card-back">${emoji}</div>
             </div>
         `;
-    }).join("");
+    }).join('');
 
     SELECTORS.board.insertAdjacentHTML("beforeend", cardsHTML);
 };
 
 generateGame()
+
+// Обработчик события клика по карточке
+const CARDS = SELECTORS.board.children;
+
+if(CARDS) {
+    // HtmlCollection в массив
+    [...CARDS].forEach((card) => {
+        // Добавление элемента на отдельно взятую карточку
+        card.addEventListener('click', (event) => {
+
+        });
+    });
+
+}
